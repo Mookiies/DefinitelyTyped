@@ -127,6 +127,15 @@ export class ChannelObject {
     playSound?: boolean;
 }
 
+export type Importance = Readonly<{
+    DEFAULT: 3;
+    HIGH: 4;
+    LOW: 2;
+    MIN: 1;
+    NONE: 0;
+    UNSPECIFIED: -1000;
+}>;
+
 export interface PushNotification {
     configure(options: PushNotificationOptions): void;
     unregister(): void;
@@ -156,6 +165,7 @@ export interface PushNotification {
     createChannel(channel: ChannelObject, callback: (created: boolean) => void): void;
     channelBlocked(channel_id: string, callback: (blocked: boolean) => void): void;
     deleteChannel(channel_id: string): void;
+    Importance: Importance;
 }
 
 declare const PushNotification: PushNotification;
